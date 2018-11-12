@@ -1,0 +1,72 @@
+﻿<Window x:Class="TicTacToe.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:z="clr-namespace:TicTacToe"
+        Title="Tic-Tac-Toe játék" Width="900" Height="600">
+    <Grid x:Name="GridMain">
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel x:Name="StackPanelAI" Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+            <GroupBox x:Name="GroupBoxAIX" Header="Az X játékos stratégiája" Margin="10" Padding="10">
+                <StackPanel x:Name="StackPanelAIX">
+                    <z:RadioButtonAI x:Name="RadioButtonXStrategy1" Content="Emberi játékos" AIType="Human" IsChecked="True" ToolTip="Emberi játékos" />
+                    <z:RadioButtonAI x:Name="RadioButtonXStrategy2" Content="A következő üres hely" AIType="Simple1" ToolTip="A gép a következő üres helyet választja ki"  />
+                    <z:RadioButtonAI x:Name="RadioButtonXStrategy3" Content="Véletlenszerű üres hely" AIType="Simple2" ToolTip="A gép véletlenszerűen választ egyet az üres helyek közül" />
+                    <z:RadioButtonAI x:Name="RadioButtonXStrategy4" Content="A következő üres hely táblázat alapján" AIType="Position" />
+                    <z:RadioButtonAI x:Name="RadioButtonXStrategy5" Content="Szabályok alapján" AIType="Rule" />
+                    <z:RadioButtonAI x:Name="RadioButtonXStrategy6" Content="Statikus kiértékelő függvény, 1 lépéses előretekintés" AIType="Static1" />
+                    <z:RadioButtonAI x:Name="RadioButtonXStrategy7" Content="Minimax algoritmus, a teljes játékfa vizsgálata" AIType="Minimax" />
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox x:Name="GroupBoxAIO" Header="Az O játékos stratégiája" Margin="10" Padding="10">
+                <StackPanel x:Name="StackPanelAIO">
+                    <z:RadioButtonAI x:Name="RadioButtonOStrategy1" Content="Emberi játékos" AIType="Human" ToolTip="Emberi játékos" />
+                    <z:RadioButtonAI x:Name="RadioButtonOStrategy2" Content="A következő üres hely" AIType="Simple1" IsChecked="True" ToolTip="A gép a következő üres helyet választja ki" />
+                    <z:RadioButtonAI x:Name="RadioButtonOStrategy3" Content="Véletlenszerű üres hely" AIType="Simple2" ToolTip="A gép véletlenszerűen választ egyet az üres helyek közül" />
+                    <z:RadioButtonAI x:Name="RadioButtonOStrategy4" Content="A következő üres hely táblázat alapján" AIType="Position" />
+                    <z:RadioButtonAI x:Name="RadioButtonOStrategy5" Content="Szabályok alapján" AIType="Rule" />
+                    <z:RadioButtonAI x:Name="RadioButtonOStrategy6" Content="Statikus kiértékelő függvény, 1 lépéses előretekintés" AIType="Static1" />
+                    <z:RadioButtonAI x:Name="RadioButtonOStrategy7" Content="Minimax algoritmus, a teljes játékfa vizsgálata" AIType="Minimax" />
+                </StackPanel>
+            </GroupBox>
+
+            <Button x:Name="ButtonNewGame" Content="Új játék" Margin="3 3" Click="ButtonNewGame_Click" />
+            <Button x:Name="ButtonSimulation" Content="Szimuláció" Margin="3 3" Click="ButtonSimulation_Click" />
+
+            <StackPanel Orientation="Horizontal" Margin="0 10 0 2">
+                <TextBlock Text="Lépésgenerálás ideje: " FontSize="14" />
+                <TextBlock x:Name="TextBlockAITime" FontSize="14" Foreground="Black" Padding="5 0" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0 2 0 2">
+                <TextBlock Text="Eredmény: " FontSize="14" />
+                <TextBlock x:Name="TextBlockResult" FontSize="14" Foreground="Red" Padding="5 0" />
+            </StackPanel>
+
+            <GroupBox Header="Minimax algoritmus" Margin="4" Padding="10">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 2 0 2">
+                        <TextBlock Text="Megvizsgált állások száma: " FontSize="14" />
+                        <TextBlock x:Name="TextBlockAISteps" FontSize="14" Foreground="Black" Padding="5 0" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0 2 0 2">
+                        <TextBlock Text="Legjobb lehetőség: " FontSize="14" />
+                        <TextBlock x:Name="TextBlockAIBestResult" FontSize="14" Foreground="Black" Padding="5 0" />
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+
+        </StackPanel>
+
+    </Grid>
+</Window>
